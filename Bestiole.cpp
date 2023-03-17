@@ -13,10 +13,11 @@ const double      Bestiole::LIMITE_VUE = 30.;
 int               Bestiole::next = 0;
 
 
-Bestiole::Bestiole( void )
+Bestiole::Bestiole(void)
 {
 
    identite = ++next;
+   // b.Comportement->agir();
 
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
@@ -32,11 +33,49 @@ Bestiole::Bestiole( void )
 
 }
 
-
-Bestiole::Bestiole( const Bestiole & b )
+Bestiole::Bestiole( Comportement* comp )
 {
 
    identite = ++next;
+   // comp->agir(this);
+   comportement = comp;
+   
+   //comportement(comp)
+   cout << "const Bestiole (" << identite << ") a un comportement" << endl;
+
+   x = y = 0;
+   cumulX = cumulY = 0.;
+   orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+   vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+
+   couleur = new T[ 3 ];
+   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+
+}
+
+
+// Bestiole::Bestiole(comportement, string couleur)
+// {
+//    this->comportement = comportement;
+
+//    this-> couleur = new T[ 3 ];
+//    if (couleur== "marron") {
+//        this->couleur[ 0 ] = 96;
+//        this->couleur[ 1 ] = 64;
+//        this->couleur[ 2 ] = 32;
+//    };
+
+// }
+
+
+
+Bestiole::Bestiole( const Bestiole & b)
+{
+
+   identite = ++next;
+   comportement = b.comportement;
 
    cout << "const Bestiole (" << identite << ") par copie" << endl;
 
@@ -55,9 +94,10 @@ Bestiole::~Bestiole( void )
 {
 
    delete[] couleur;
+   // delete comportement;
 
    cout << "dest Bestiole" << endl;
-
+   
 }
 
 
@@ -145,3 +185,33 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+void Bestiole::agir()
+{
+
+   cout<<"Je bouge !"<<endl;
+}
+
+
+// void Bestiole::useComportement(Bestiole& b, std::vector<Bestiole>& list) {
+   //  if(this->multiple) {
+   //      double alea = static_cast<double>(rand()) / RAND_MAX;
+   //      if (alea < 0.25) {
+   //          shared_ptr<Gregaire> gregairePtr(new Gregaire());
+   //          this->comportement = gregairePtr;
+   //      } else if (alea < 0.5) {
+   //          shared_ptr<Peureuse> peureusePtr(new Peureuse());
+   //          this->comportement = peureusePtr;
+   //      } else if (alea < 0.75) {
+   //          shared_ptr<Kamikaze> kamikazePtr(new Kamikaze());
+   //          this->comportement = kamikazePtr;
+   //      } else if (alea < 1) {
+   //          shared_ptr<Prevoyante> prevoyantePtr(new Prevoyante());
+   //          this->comportement = prevoyantePtr;
+   //      }
+   //  }
+   // comportement->agir(Bestiole& b, std::vector<Bestiole>& list);
+   // comportement->agir(Bestiole& b, std::vector<Bestiole>& list);
+   // Kamikaze();
+//    this->useComportement() = new Kamikaze();
+// }

@@ -4,6 +4,9 @@
 
 #include "UImg.h"
 
+#include "Comportement.h"
+#include "Comportement/Kamikaze.h"
+
 #include <iostream>
 
 using namespace std;
@@ -28,6 +31,8 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   
+   Comportement* comportement;
 
    T               * couleur;
 
@@ -36,7 +41,8 @@ private :
 
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
-   Bestiole( const Bestiole & b );                 // Constructeur de copies
+   Bestiole(Comportement* comp);
+   Bestiole( const Bestiole & b);                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
@@ -47,6 +53,10 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   void agir();
+
+   // void useComportement(Bestiole& b, std::vector<Bestiole>& list);
 
 };
 
