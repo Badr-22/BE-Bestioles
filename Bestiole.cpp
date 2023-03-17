@@ -27,9 +27,9 @@ Bestiole::Bestiole(void)
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
    couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
+   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
+   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
 
 }
 
@@ -41,7 +41,7 @@ Bestiole::Bestiole( Comportement* comp )
    comportement = comp;
    
    //comportement(comp)
-   cout << "const Bestiole (" << identite << ") a un comportement" << endl;
+   cout << "const Bestiole (" << identite << ") a un comportement avec adresse " << comp << endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -49,9 +49,9 @@ Bestiole::Bestiole( Comportement* comp )
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
    couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
+   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
+   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
 
 }
 
@@ -189,7 +189,8 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 void Bestiole::agir()
 {
 
-   cout<<"Je bouge !"<<endl;
+   cout<<"La bestiole bouge !"<<endl;
+   comportement-> agir(this);
 }
 
 

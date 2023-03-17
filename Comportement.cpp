@@ -3,7 +3,7 @@
 // Classe abstraite pour les comportements de Bestiole
 void Comportement::agir(Bestiole *b)
 {
-    cout << "La bestiole a agit" << endl;
+    
 }
 
 

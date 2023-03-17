@@ -18,9 +18,10 @@ int main()
 
    // Création des comportements
    std::vector<Comportement*> comportements = {
-        new Kamikaze(), new Kamikaze() //,
-        //new Peureuse(),
-        //new Gregaire()
+        new Kamikaze(),
+        new Peureuse(),
+        new Gregaire(),
+        new Prevoyante()
     };
 
 

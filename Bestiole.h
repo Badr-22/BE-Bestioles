@@ -6,6 +6,9 @@
 
 #include "Comportement.h"
 #include "Comportement/Kamikaze.h"
+#include "Comportement/Peureuse.h"
+#include "Comportement/Gregaire.h"
+#include "Comportement/Prevoyante.h"
 
 #include <iostream>
 
@@ -34,7 +37,7 @@ private :
    
    Comportement* comportement;
 
-   T               * couleur;
+   
 
 private :
    void bouge( int xLim, int yLim );
@@ -55,6 +58,8 @@ public :                                           // Forme canonique :
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
    void agir();
+
+   T               * couleur;
 
    // void useComportement(Bestiole& b, std::vector<Bestiole>& list);
 
