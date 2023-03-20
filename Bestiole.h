@@ -32,8 +32,8 @@ private :
    int               identite;
    int               x, y;
    double            cumulX, cumulY;
-   double            orientation;
    double            vitesse;
+   
    
    Comportement* comportement;
 
@@ -42,7 +42,9 @@ private :
 private :
    void bouge( int xLim, int yLim );
 
-public :                                           // Forme canonique :
+public :    
+   double            newOrientation;
+   double            orientation;                                       // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole(Comportement* comp);
    Bestiole( const Bestiole & b);                 // Constructeur de copies
@@ -57,7 +59,12 @@ public :                                           // Forme canonique :
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
-   void agir();
+   void go(list<double> orientations);
+
+
+   double myOrientation() const; 
+   void startNewOrientation(double newtOrientation);
+   
 
    T               * couleur;
 

@@ -8,7 +8,7 @@ using namespace std;
 
 class Gregaire : public Comportement {
 public:
-    void agir(Bestiole *b) override;
+    void agir(Bestiole *b, list<double> orientations) override;
 };
 
 #endif // COMPORTEMENT_GREGAIRE_H_

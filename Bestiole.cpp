@@ -83,6 +83,7 @@ Bestiole::Bestiole( const Bestiole & b)
    y = b.y;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
+   newOrientation = orientation;
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
@@ -112,7 +113,7 @@ void Bestiole::initCoords( int xLim, int yLim )
 
 void Bestiole::bouge( int xLim, int yLim )
 {
-
+   orientation = newOrientation;
    double         nx, ny;
    double         dx = cos( orientation )*vitesse;
    double         dy = -sin( orientation )*vitesse;
@@ -142,6 +143,7 @@ void Bestiole::bouge( int xLim, int yLim )
       y = static_cast<int>( ny );
       cumulY += ny - y;
    }
+   newOrientation = orientation;
 
 }
 
@@ -186,33 +188,16 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 }
 
-void Bestiole::agir()
-{
-
-   cout<<"La bestiole bouge !"<<endl;
-   comportement-> agir(this);
+double Bestiole::myOrientation() const {
+    return orientation;
 }
 
+void Bestiole::go(list<double> orientations)
+{
+   cout<<"La bestiole a une comportement !"<<endl;
+   comportement-> agir(this,orientations);
+}
 
-// void Bestiole::useComportement(Bestiole& b, std::vector<Bestiole>& list) {
-   //  if(this->multiple) {
-   //      double alea = static_cast<double>(rand()) / RAND_MAX;
-   //      if (alea < 0.25) {
-   //          shared_ptr<Gregaire> gregairePtr(new Gregaire());
-   //          this->comportement = gregairePtr;
-   //      } else if (alea < 0.5) {
-   //          shared_ptr<Peureuse> peureusePtr(new Peureuse());
-   //          this->comportement = peureusePtr;
-   //      } else if (alea < 0.75) {
-   //          shared_ptr<Kamikaze> kamikazePtr(new Kamikaze());
-   //          this->comportement = kamikazePtr;
-   //      } else if (alea < 1) {
-   //          shared_ptr<Prevoyante> prevoyantePtr(new Prevoyante());
-   //          this->comportement = prevoyantePtr;
-   //      }
-   //  }
-   // comportement->agir(Bestiole& b, std::vector<Bestiole>& list);
-   // comportement->agir(Bestiole& b, std::vector<Bestiole>& list);
-   // Kamikaze();
-//    this->useComportement() = new Kamikaze();
-// }
+void Bestiole::startNewOrientation(double newOrientation) {
+    Bestiole::newOrientation = newOrientation;
+}

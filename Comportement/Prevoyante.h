@@ -8,7 +8,7 @@ using namespace std;
 
 class Prevoyante : public Comportement {
 public:
-    void agir(Bestiole *b) override;
+    void agir(Bestiole *b, list<double> orientations) override;
 };
 
 #endif // COMPORTEMENT_PREVOYANTE_H_

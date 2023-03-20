@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -18,9 +19,11 @@ private :
    static const T          white[];
 
    int                     width, height;
-   std::vector<Bestiole>   listeBestioles;
+   
 
 public :
+   //list<double> orientations;
+   std::vector<Bestiole>   listeBestioles;
    Milieu( int _width, int _height );
    ~Milieu( void );
 

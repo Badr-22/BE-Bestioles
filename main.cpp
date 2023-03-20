@@ -13,6 +13,7 @@ int main()
 {
 
    Aquarium       ecosysteme( 640, 480, 30 );
+   Milieu& eau = ecosysteme.getMilieu();
 
    // Comportement* comportement;
 
@@ -28,8 +29,8 @@ int main()
    for ( int i = 1; i <= 20; ++i ){
       int index_comportement = rand() % comportements.size();
       Bestiole b(comportements[index_comportement]);
-      b.agir();
-      ecosysteme.getMilieu().addMember(b);
+      //b.agir(); //it's inside eau.step() which is inside of ecosysteme.run()
+      eau.addMember(b);
    
    }
    ecosysteme.run();

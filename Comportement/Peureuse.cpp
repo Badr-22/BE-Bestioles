@@ -1,12 +1,12 @@
 # include "Peureuse.h"
 
-void Peureuse::agir(Bestiole *b) {
+void Peureuse::agir(Bestiole *b, list<double> orientations) {
     // Implémentation du comportement Kamikaze
     // Suivre les groupes de Bestioles et les heurter
     // avec une certaine probabilité
-    cout << "Je suis un Peureuse et je suis en train d'éviter les autres Bestioles !" << endl;
+    cout << "Peureuse aide !" << endl;
 
-    b->couleur[ 0 ] = 125;
-    b->couleur[ 1 ] = 250;
-    b->couleur[ 2 ] = 148;
+    b->couleur[ 0 ] = 15;
+    b->couleur[ 1 ] = 255;
+    b->couleur[ 2 ] = 114;
 }

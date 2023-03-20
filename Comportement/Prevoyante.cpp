@@ -1,12 +1,12 @@
 # include "Prevoyante.h"
 
-void Prevoyante::agir(Bestiole *b) {
+void Prevoyante::agir(Bestiole *b, list<double> orientations) {
     // Implémentation du comportement Prevoyante
     // Suivre les groupes de Bestioles et les heurter
     // avec une certaine probabilité
-    cout << "Je suis un Prevoyante et je suis en train d'éviter les autres Bestioles !" << endl;
+    cout << "Prevoyante, evite moi !" << endl;
 
-    b->couleur[ 0 ] = 185;
-    b->couleur[ 1 ] = 54;
-    b->couleur[ 2 ] = 199;
+    b->couleur[ 0 ] = 36;
+    b->couleur[ 1 ] = 28;
+    b->couleur[ 2 ] = 255;
 }
