@@ -22,7 +22,6 @@ private :
    
 
 public :
-   //list<double> orientations;
    std::vector<Bestiole>   listeBestioles;
    Milieu( int _width, int _height );
    ~Milieu( void );

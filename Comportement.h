@@ -13,7 +13,6 @@ class Comportement {
 public:
     virtual void agir(Bestiole *b, list<double> orientations);
     
-    // virtual ~Comportement();
 };
 
 

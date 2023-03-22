@@ -63,7 +63,7 @@ public :
 
 
    double myOrientation() const; 
-   void startNewOrientation(double newtOrientation);
+   void startNewOrientation(double newOrientation);
    
 
    T               * couleur;

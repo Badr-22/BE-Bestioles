@@ -36,10 +36,8 @@ Bestiole::Bestiole( Comportement* comp )
 {
 
    identite = ++next;
-   // comp->agir(this);
    comportement = comp;
    
-   //comportement(comp)
    cout << "const Bestiole (" << identite << ") a un comportement avec adresse " << comp << endl;
 
    x = y = 0;
