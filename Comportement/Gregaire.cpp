@@ -4,7 +4,7 @@ void Gregaire::agir(Bestiole *b, list<double> orientations) {
     // Implémentation du comportement Gregaire
     // Suivre les groupes de Bestioles et les heurter
     // avec une certaine probabilité
-    cout << "Gregaire chimba !" << endl;
+    cout << "Gregaire jaune !" << endl;
 
     b->couleur[ 0 ] = 255;
     b->couleur[ 1 ] = 223;

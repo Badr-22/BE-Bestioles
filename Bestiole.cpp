@@ -144,7 +144,7 @@ void Bestiole::draw( UImg & support )
 
    support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
-   //support.draw_circle(x,y, LIMITE_VUE, couleur,1,~0U); // print the limite view area
+   support.draw_circle(x,y, LIMITE_VUE, couleur,1,~0U); // print the limite view area
 
 }
 
