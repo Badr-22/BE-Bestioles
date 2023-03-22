@@ -17,8 +17,7 @@ void Gregaire::agir(Bestiole *b, list<double> orientations) {
     for(auto i = orientations.begin(); i != orientations.end(); i++){
         x += *i;
     }
-    b->startNewOrientation(x/ orientations.size());
-    //b->newOrientation = 1;
-    //b->orientation = 1;
+    b->startNewOrientation(x / orientations.size());
+    
 }
 

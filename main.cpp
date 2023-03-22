@@ -29,7 +29,6 @@ int main()
    for ( int i = 1; i <= 20; ++i ){
       int index_comportement = rand() % comportements.size();
       Bestiole b(comportements[index_comportement]);
-      //b.agir(); //it's inside eau.step() which is inside of ecosysteme.run()
       eau.addMember(b);
    
    }

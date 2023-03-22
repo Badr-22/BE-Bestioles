@@ -8,7 +8,7 @@
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
+const double      Bestiole::LIMITE_VUE = 60.;
 
 int               Bestiole::next = 0;
 
@@ -17,7 +17,6 @@ Bestiole::Bestiole(void)
 {
 
    identite = ++next;
-   // b.Comportement->agir();
 
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
@@ -54,22 +53,6 @@ Bestiole::Bestiole( Comportement* comp )
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*0. );
 
 }
-
-
-// Bestiole::Bestiole(comportement, string couleur)
-// {
-//    this->comportement = comportement;
-
-//    this-> couleur = new T[ 3 ];
-//    if (couleur== "marron") {
-//        this->couleur[ 0 ] = 96;
-//        this->couleur[ 1 ] = 64;
-//        this->couleur[ 2 ] = 32;
-//    };
-
-// }
-
-
 
 Bestiole::Bestiole( const Bestiole & b)
 {
@@ -165,6 +148,7 @@ void Bestiole::draw( UImg & support )
 
    support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
+   support.draw_circle(x,y, LIMITE_VUE, couleur,100,100);
 
 }
 
