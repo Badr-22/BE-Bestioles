@@ -5,6 +5,7 @@
 #include "UImg.h"
 
 #include <iostream>
+#include "AbstractCapteur.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ using namespace std;
 class Milieu;
 
 
-class Bestiole
+class Bestiole : public AbstractBestiole
 {
 
 private :
@@ -28,8 +29,13 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   std::vector<AbstractCapteur>   listeCapteurs;
 
    T               * couleur;
+
+protected :
+   int camouflage = 1;
+   int prob_mort ;
 
 private :
    void bouge( int xLim, int yLim );
@@ -47,6 +53,12 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   int get_vitesse();
+   int get_prob_mort();
+   int get_camouflage();
+
+   std::vector<AbstractCapteur> getListeCapteurs();
 
 };
 

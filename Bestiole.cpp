@@ -145,3 +145,23 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+std::vector<AbstractCapteur> Bestiole::getListeCapteurs()
+{
+   return this->listeCapteurs;
+}
+
+int Bestiole::get_vitesse()
+{
+   return this->vitesse;
+}
+
+int Bestiole::get_camouflage()
+{
+   return this->camouflage;
+}
+
+int Bestiole::get_prob_mort()
+{
+   return this->prob_mort;
+}
