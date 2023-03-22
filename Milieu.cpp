@@ -26,36 +26,57 @@ Milieu::~Milieu( void )
 
 }
 
-
+/*
 void Milieu::step( void )
 {
    list<double> orientations;
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
 
-   
+   for ( std::vector<Bestiole>::iterator b1 = listeBestioles.begin() ; b1 != listeBestioles.end() ; ++b1 )
+      {
+         for (std::vector<Bestiole>::iterator b2 = listeBestioles.begin(); b2 < listeBestioles.end(); ++b2)
+         { 
+         
+            if(b1->jeTeVois(*b2))
+            {
+               orientations.push_back(b2->myOrientation());
+            }
+         }
+      }
 
+   for ( std::vector<Bestiole>::iterator b = listeBestioles.begin() ; b != listeBestioles.end() ; ++b )
+      {
+         b->action( *this );
+         b->draw( *this );
+         b->go(orientations);
+      }
+      
+}*/
+
+void Milieu::step( void )
+{
+   
+   cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
+
+
+   list<double> orientations;
 for ( std::vector<Bestiole>::iterator b1 = listeBestioles.begin() ; b1 != listeBestioles.end() ; ++b1 )
    {
       for (std::vector<Bestiole>::iterator b2 = listeBestioles.begin(); b2 < listeBestioles.end(); ++b2) 
       {
-         if(it->jeTeVois(*b2))
+         if(b1->jeTeVois(*b2))
          {
             orientations.push_back(b2->myOrientation());
          }
+      
       }
 
-      it->action( *this );
-      it->draw( *this );
+      b1->go(orientations);
+      b1->action( *this );
+      b1->draw( *this );
       
    }
-
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-   {
-   it->go(orientations);
-   }
-
 }
-
 
 
 int Milieu::nbVoisins( const Bestiole & b )
