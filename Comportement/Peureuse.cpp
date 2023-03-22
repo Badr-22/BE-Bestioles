@@ -11,7 +11,7 @@ void Peureuse::agir(Bestiole *b, list<double> orientations) {
     b->couleur[ 1 ] = 255;
     b->couleur[ 2 ] = 114;
     
-    if(orientations.size() >=10){
+    if(orientations.size() >=1){
         b -> startNewOrientation(b->myOrientation() + deviation);
     }
 

@@ -13,20 +13,19 @@ int main()
 {
 
    Aquarium       ecosysteme( 640, 480, 30 );
+   //Aquarium       ecosysteme( 300, 300, 40 );
    Milieu& eau = ecosysteme.getMilieu();
-
-   // Comportement* comportement;
 
    // Création des comportements
    std::vector<Comportement*> comportements = {
         new Kamikaze(),
-        new Peureuse(),
+        new Peureuse() ,
         new Gregaire(),
         new Prevoyante()
     };
 
 
-   for ( int i = 1; i <= 20; ++i ){
+   for ( int i = 1; i <= 5; ++i ){
       int index_comportement = rand() % comportements.size();
       Bestiole b(comportements[index_comportement]);
       eau.addMember(b);

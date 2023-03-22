@@ -59,24 +59,24 @@ void Milieu::step( void )
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
 
 
-   list<double> orientations;
-for ( std::vector<Bestiole>::iterator b1 = listeBestioles.begin() ; b1 != listeBestioles.end() ; ++b1 )
-   {
-      for (std::vector<Bestiole>::iterator b2 = listeBestioles.begin(); b2 < listeBestioles.end(); ++b2) 
+   
+   for ( std::vector<Bestiole>::iterator b1 = listeBestioles.begin() ; b1 != listeBestioles.end() ; ++b1 )
       {
-         if(b1->jeTeVois(*b2))
+         list<double> orientations;
+         for (std::vector<Bestiole>::iterator b2 = listeBestioles.begin(); b2 < listeBestioles.end(); ++b2) 
          {
-            orientations.push_back(b2->myOrientation());
+            if(!(b1 == b2) && (b1->jeTeVois(*b2)) )
+            {
+               orientations.push_back(b2->myOrientation());
+            }
+         
          }
-      
+         b1->go(orientations);
+         b1->action( *this );
+         b1->draw( *this );
+         
       }
-
-      b1->go(orientations);
-      b1->action( *this );
-      b1->draw( *this );
-      
    }
-}
 
 
 int Milieu::nbVoisins( const Bestiole & b )

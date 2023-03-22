@@ -76,12 +76,8 @@ Bestiole::Bestiole( const Bestiole & b)
 
 Bestiole::~Bestiole( void )
 {
-
    delete[] couleur;
-   // delete comportement;
-
-   cout << "dest Bestiole" << endl;
-   
+   cout << "dest Bestiole" << endl;  
 }
 
 
@@ -148,7 +144,7 @@ void Bestiole::draw( UImg & support )
 
    support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
    support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
-   support.draw_circle(x,y, LIMITE_VUE, couleur,100,100);
+   //support.draw_circle(x,y, LIMITE_VUE, couleur,1,~0U); // print the limite view area
 
 }
 
@@ -178,7 +174,7 @@ double Bestiole::myOrientation() const {
 
 void Bestiole::go(list<double> orientations)
 {
-   cout<<"La bestiole a une comportement !"<<endl;
+   cout<<"La bestiole a une comportement ! " <<endl;
    comportement-> agir(this,orientations);
 }
 
